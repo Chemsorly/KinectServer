@@ -1,0 +1,47 @@
+﻿<Window x:Class="Post_knv_Server.ScanResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Scan Results" Height="452.871" Width="406.4" Background="{StaticResource LofipGreenLight}">
+    <Grid>
+        <TextBlock Text="Algorithm used:" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Delaunay volume:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Number of clouds:" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Number of points:" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Name="_Textblock_AlgorithmUsed" Text="((default))" HorizontalAlignment="Left" Margin="194,33,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_ScannedDelaunayVolume" Text="((default))" HorizontalAlignment="Left" Margin="194,56,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_NumberOfClouds" Text="((default))" HorizontalAlignment="Left" Margin="194,133,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Name="_Textblock_NumberOfPoints" Text="((default))" HorizontalAlignment="Left" Margin="194,156,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Date:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_Date" Text="((default))" HorizontalAlignment="Left" Margin="194,10,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Convex algorithm volume:" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Width="179" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_ConvexScannedAlgorithmVolume" Text="((default))" HorizontalAlignment="Left" Margin="194,79,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Concav algorithm volume:" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="179" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_ConcavScannedAlgorithmVolume" Text="((default))" HorizontalAlignment="Left" Margin="194,102,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Number of containers:" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_NumberOfContainers" Text="((default))" HorizontalAlignment="Left" Margin="194,209,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Container accuracy:" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_ContainerAccuracy" Text="((default))" HorizontalAlignment="Left" Margin="194,232,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock Text="Estimated payload:" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <TextBlock x:Name="_Textblock_PayloadVolume" Text="((default))" HorizontalAlignment="Left" Margin="194,189,0,0" VerticalAlignment="Top" Width="194" Style="{StaticResource NormalFontOnWhite}" FontSize="15"/>
+        <ListView x:Name="_ContainerResultListView" HorizontalAlignment="Left" Height="133" Margin="10,255,0,0" VerticalAlignment="Top" Width="266">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Container Name" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}" Style="{StaticResource NormalFontOnWhite}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Amount" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding amount}" Style="{StaticResource NormalFontOnWhite}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

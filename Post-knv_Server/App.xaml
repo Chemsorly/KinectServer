@@ -1,0 +1,91 @@
+﻿<Application x:Class="Post_knv_Server.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="LofipGreen" Color="#9BBB59"/>
+        <SolidColorBrush x:Key="LofipGreenLight" Color="#E9F0DC"/>
+        <SolidColorBrush x:Key="LofipOrange" Color="#E36200"/>
+        <SolidColorBrush x:Key="LofipGrey" Color="#888888"/>
+        <SolidColorBrush x:Key="LofipGreyLight" Color="#CCCCCC"/>
+        <SolidColorBrush x:Key="LofipWhite" Color="#FCFCFC"/>
+        <SolidColorBrush x:Key="LofipFontOnGreenLight" Color="DarkGray"/>
+        <SolidColorBrush x:Key="LofipFontOnGrey" Color="#FCFCFC"/>
+        <SolidColorBrush x:Key="LofipFontOnGreyLight" Color="#222222"/>
+        <SolidColorBrush x:Key="LofipFontOnWhite" Color="#222222"/>
+        <SolidColorBrush x:Key="LofipFontOnOrange" Color="#FCFCFC"/>
+
+        <FontFamily x:Key="LofipMainFont">Arial</FontFamily>
+
+        <Style x:Key="ButtonStyleOnWhite" TargetType="Button">
+            <Setter Property="FontFamily" Value="LofipMainFont" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="{StaticResource LofipGreyLight}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource LofipGreyLight}"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnGreyLight}" />
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="ForceCursor" Value="False"/>
+            <Setter Property="IsManipulationEnabled" Value="False"/>
+        </Style>
+
+        <Style x:Key="ButtonStyleOnGreen" TargetType="Button">
+            <Setter Property="FontFamily" Value="LofipMainFont" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="{StaticResource LofipGreenLight}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource LofipGreenLight}"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnGreenLight}" />
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        </Style>
+
+        <Style x:Key="HeadlineFontOnGreen" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnOrange}"/>
+        </Style>
+
+        <Style x:Key="HeadlineFontOnWhite" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnWhite}"/>
+        </Style>
+
+        <Style x:Key="HeadlineFontOnWhiteSmaller" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnWhite}"/>
+        </Style>
+
+        <Style x:Key="NormalFontOnWhite" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnWhite}"/>
+        </Style>
+
+        <Style x:Key="NormalFontOnGreyLight" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnGreyLight}"/>
+        </Style>
+
+        <Style x:Key="NormalFontOnWhiteChkbx" TargetType="CheckBox">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="Foreground" Value="{StaticResource LofipFontOnWhite}"/>
+        </Style>
+
+        <Style x:Key="NormalTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Height" Value="18"/>
+        </Style>
+
+        <Style x:Key="SettingsTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="LofipMainFont"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="16" />
+        </Style>
+    </Application.Resources>
+</Application>

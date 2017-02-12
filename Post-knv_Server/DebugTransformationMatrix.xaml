@@ -1,0 +1,38 @@
+﻿<Window x:Class="Post_knv_Server.DebugTransformationMatrix"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DebugTransformationMatrix" Height="170.317" Width="152.161" Closing="Window_Closing">
+    <Grid>
+        <Grid Name="TransformationGrid" Margin="10,10,0,0" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Width="124">
+            <Grid.Background>
+                <SolidColorBrush Color="#FFE8FF00" Opacity="0.1"/>
+            </Grid.Background>
+            <Grid Name="RotationGrid" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FF00FF2E" Opacity="0.2"/>
+                </Grid.Background>
+                <TextBox x:Name="_Txtbox_Trans_00" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Margin="5,2,0,0" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_10" HorizontalAlignment="Left" Height="25" Margin="34,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_20" HorizontalAlignment="Left" Height="25" Margin="64,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_01" HorizontalAlignment="Left" Height="25" Margin="5,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_11" HorizontalAlignment="Left" Height="25" Margin="34,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_21" HorizontalAlignment="Left" Height="25" Margin="64,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_02" HorizontalAlignment="Left" Height="25" Margin="5,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_12" HorizontalAlignment="Left" Height="25" Margin="34,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_22" HorizontalAlignment="Left" Height="25" Margin="64,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+            </Grid>
+            <Grid Name="TranslationGrid" Margin="92,0,0,0" HorizontalAlignment="Left" Width="30" Height="89" VerticalAlignment="Top">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FFF90000" Opacity="0.2"/>
+                </Grid.Background>
+                <TextBox x:Name="_Txtbox_Trans_30" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Margin="2,2,0,0" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_31" HorizontalAlignment="Left" Height="25" Margin="2,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+                <TextBox x:Name="_Txtbox_Trans_32" HorizontalAlignment="Left" Height="25" Margin="2,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+            </Grid>
+            <TextBox x:Name="_Txtbox_Trans_03" HorizontalAlignment="Left" Height="25" Margin="5,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+            <TextBox x:Name="_Txtbox_Trans_13" HorizontalAlignment="Left" Height="25" Margin="34,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+            <TextBox x:Name="_Txtbox_Trans_23" HorizontalAlignment="Left" Height="25" Margin="64,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+            <TextBox x:Name="_Txtbox_Trans_33" HorizontalAlignment="Left" Height="25" Margin="94,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" FontSize="8"/>
+        </Grid>
+    </Grid>
+</Window>

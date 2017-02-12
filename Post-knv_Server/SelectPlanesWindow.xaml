@@ -1,0 +1,95 @@
+﻿<Window x:Class="Post_knv_Server.SelectPlanesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select Planes" Height="780" Width="850" Background="{StaticResource LofipGreenLight}" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Closed="Window_Closed">
+    <Grid>
+        <ListView x:Name="SelectPlanesListView" HorizontalAlignment="Left" Margin="10,33,0,0" Width="482" Height="348" VerticalAlignment="Top" BorderBrush="Transparent" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="SelectPlanesListView_SelectionChanged" SelectionMode="Single">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Inlier"  Width="80">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding inlier}" Style="{StaticResource NormalFontOnWhite}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="D"  Width="70">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding D}" Style="{StaticResource NormalFontOnWhite}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="N"  Width="230">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding N}" Style="{StaticResource NormalFontOnWhite}" HorizontalAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Select" Width="40" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Width="25" Height="25">
+                                    <CheckBox x:Name="_CheckboxSelect" IsChecked="{Binding selectPlane}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Floor" Width="40" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Width="25" Height="25">
+                                    <CheckBox x:Name="_CheckboxFloorSelect" IsChecked="{Binding selectMaster}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="_CheckboxFloorSelect_Checked" Unchecked="_CheckboxFloorSelect_Checked"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <TextBlock Text="Planes:" Margin="10,8,0,0" VerticalAlignment="Top" Style="{StaticResource HeadlineFontOnWhite}" HorizontalAlignment="Left" Width="157"/>
+        <TextBlock Text="Views:" Margin="10,401,0,0" VerticalAlignment="Top" Style="{StaticResource HeadlineFontOnWhite}" HorizontalAlignment="Left" Width="157"/>
+        <Label Content="Front View" HorizontalAlignment="Left" Margin="12,646,0,0" Height="26" VerticalAlignment="Top"/>
+        <Label Content="Side View" HorizontalAlignment="Left" Margin="281,646,0,0" Height="26" VerticalAlignment="Top" Width="65"/>
+        <Label Content="Bottom View" HorizontalAlignment="Left" Margin="554,646,0,0" Height="26" VerticalAlignment="Top"/>
+        <Image x:Name="_PointImagePlane_Front" Height="212" Width="256" HorizontalAlignment="Left" Margin="12,432,0,0" VerticalAlignment="Top" Stretch="UniformToFill"/>
+        <Image x:Name="_PointImagePlane_Side" Height="212" Width="256" HorizontalAlignment="Left" Margin="281,432,0,0" VerticalAlignment="Top" Stretch="UniformToFill"/>
+        <Image x:Name="_PointImagePlane_Bottom" Height="212" Width="256" HorizontalAlignment="Left" Margin="554,432,0,0" VerticalAlignment="Top" Stretch="UniformToFill"/>
+        <Button x:Name="_ButtonSelectPlanes_Ok"  HorizontalAlignment="Left" Margin="12,694,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource ButtonStyleOnWhite}" Height="30" Click="_ButtonSelectPlanes_Ok_Click" Content="Ok"/>
+        <Button x:Name="_ButtonSelectPlanes_Cancel"  HorizontalAlignment="Left" Margin="712,694,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource ButtonStyleOnWhite}" Height="30" Click="_ButtonSelectPlanes_Cancel_Click" Content="Cancel"/>
+        <TextBox x:Name="_TextboxNumberOfPlanes"  HorizontalAlignment="Left" Height="30" Margin="690,351,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="46" />
+        <Button x:Name="_ButtonFindNewPlanes" Content="Automatic search" HorizontalAlignment="Left" Margin="554,351,0,0" VerticalAlignment="Top" Width="120" Height="30" Style="{StaticResource ButtonStyleOnWhite}" Click="_ButtonFindNewPlanes_Click"/>
+        <Label Content="planes" HorizontalAlignment="Left" Margin="741,352,0,0" VerticalAlignment="Top"/>
+        <Grid Margin="554,33,32,596">
+            <TextBox x:Name="_TextboxManualPlaneV1X"  HorizontalAlignment="Left" Height="20" Margin="58,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV1Y"  HorizontalAlignment="Left" Height="20" Margin="120,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV1Z"  HorizontalAlignment="Left" Height="20" Margin="182,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV2X"  HorizontalAlignment="Left" Height="20" Margin="58,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV2Y"  HorizontalAlignment="Left" Height="20" Margin="120,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV2Z"  HorizontalAlignment="Left" Height="20" Margin="182,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV3X"  HorizontalAlignment="Left" Height="20" Margin="58,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV3Y"  HorizontalAlignment="Left" Height="20" Margin="120,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <TextBox x:Name="_TextboxManualPlaneV3Z"  HorizontalAlignment="Left" Height="20" Margin="182,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="10" />
+            <Label Content="Vector 1" HorizontalAlignment="Left" Margin="0,26,0,0" VerticalAlignment="Top"/>
+            <Label Content="Vector 2" HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Top"/>
+            <Label Content="Vector 3" HorizontalAlignment="Left" Margin="0,87,0,0" VerticalAlignment="Top"/>
+            <Label Content="X/Y/Z" HorizontalAlignment="Left" Margin="121,0,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Button x:Name="_ButtonAddPlaneManually" HorizontalAlignment="Left" Margin="554,160,0,0" VerticalAlignment="Top" Width="120" Height="30" Style="{StaticResource ButtonStyleOnWhite}" Click="_ButtonAddPlaneManually_Click">
+            <TextBlock TextAlignment="Center">Manual add</TextBlock>
+        </Button>
+
+    </Grid>
+</Window>

@@ -1,0 +1,93 @@
+﻿<Window x:Class="Post_knv_Server.ServerSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Server and Kinect Settings" Height="477.867" Width="641" ResizeMode="NoResize" Background="{StaticResource LofipGreenLight}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="643*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="342" Margin="314,10,0,0" VerticalAlignment="Top" Width="306" Background="{StaticResource LofipWhite}" Grid.Column="1">
+            <TextBox x:Name="_Txtbox_minDepth" ToolTip="The minimum depth" HorizontalAlignment="Left"  Margin="162,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Kinect Config" HorizontalAlignment="Left" VerticalAlignment="Top" Width="274"  Margin="10,10,-7,0" Style="{StaticResource HeadlineFontOnWhite}"/>
+            <TextBlock Text="Min depth:" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_maxDepth" ToolTip="The maximum depth" HorizontalAlignment="Left"  Margin="162,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Max depth:" HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_depthHeight" ToolTip="The depth height of the pictures" HorizontalAlignment="Left"  Margin="162,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Depth height:" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_depthWidth" ToolTip="The depth width of the pictures" HorizontalAlignment="Left"  Margin="162,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Depth width:" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_maxTrackingErrors" ToolTip="Maximum amount of tracking errors tolerated" HorizontalAlignment="Left"  Margin="162,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Max tracking errors:" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Width="110" Style="{StaticResource NormalFontOnWhite}"/>
+            <CheckBox x:Name="_Checkbox_translateResetPoseByMinDepthThreshold" ToolTip="If minimum threshold depth is reached, reset pose" Content="translate reset pose by min depth threshold" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="_Checkbox_AutoResetReconstructionWhenLost" ToolTip="Retry the reconstruction if anything gets lost" Content="Auto reset reconstruction when lost" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="_Txtbox_DeviceToUse" ToolTip="Which device should do the calculation?" HorizontalAlignment="Left"  Margin="162,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Device to use:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="110" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_VoxelsPerMeter" ToolTip="The voxels per meter in the pictures" HorizontalAlignment="Left"  Margin="162,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Voxels per meter:" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_VoxelResolutionX" ToolTip="The voxel resolution for the x coordinates" HorizontalAlignment="Left"  Margin="162,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Voxel resolution x:" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_VoxelResolutionY" ToolTip="The voxel resolution for the y coordinates" HorizontalAlignment="Left"  Margin="162,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Voxel resolution y:" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_VoxelResolutionZ" ToolTip="The voxel resolution for the z coordinates" HorizontalAlignment="Left"  Margin="162,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Voxel resolution z:" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_integrationWeight" ToolTip="The integration weight for the pictures" HorizontalAlignment="Left"  Margin="162,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Integration weight:" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_iterationCount" ToolTip="How many times should the process be repeated?" HorizontalAlignment="Left"  Margin="162,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Iteration count:" HorizontalAlignment="Left" Margin="10,321,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <ComboBox x:Name="_ComboBox_processorType" ToolTip="Set the processor for the calculations" HorizontalAlignment="Left" Margin="162,40,0,0" VerticalAlignment="Top" Width="133" Height="17" FontSize="9" />
+            <TextBlock Text="Processor type:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="110" Style="{StaticResource NormalFontOnWhite}"/>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="147" VerticalAlignment="Top" Width="306" Margin="3,10,0,0" Background="{StaticResource LofipWhite}" Grid.Column="1">
+            <TextBox x:Name="_Txtbox_OwnIP" ToolTip="Shows the IP of the server" HorizontalAlignment="Left"  Margin="162,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" IsReadOnly="True" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Own IP:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBlock Text="Server Config" HorizontalAlignment="Left" VerticalAlignment="Top" Width="274" Margin="10,10,-7,0" Style="{StaticResource HeadlineFontOnWhite}"/>
+            <CheckBox x:Name="_Checkbox_DebugLog" ToolTip="Turns the debug log on and off" Content="Debug log" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="_Txtbox_listeningPort" ToolTip="Shows the listening port for the connection" HorizontalAlignment="Left"  Margin="162,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Listening port:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_keepAliveInterval" ToolTip="Frequency for the connection check in ms" HorizontalAlignment="Left"  Margin="162,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Keep alive interval:" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_gatewayAddress" ToolTip="Shows the listening port for the connection" HorizontalAlignment="Left"  Margin="162,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Gateway IP:" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_signalrAddress" ToolTip="Shows the listening port for the connection" HorizontalAlignment="Left"  Margin="162,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="SignalR IP:" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="100" Style="{StaticResource NormalFontOnWhite}"/>
+
+        </Grid>
+        <Grid Margin="322,366,0,0" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Width="306" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="44*"/>
+                <ColumnDefinition Width="109*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="_Button_OK" Content="OK" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" Click="_Button_OK_Click" Style="{StaticResource ButtonStyleOnWhite}" Height="36" Margin="0,5,0,0" Grid.ColumnSpan="2"/>
+            <Button x:Name="_Button_Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="109,5,0,0" VerticalAlignment="Top" Width="109" Click="_Button_Cancel_Click" Style="{StaticResource ButtonStyleOnWhite}" Height="36" Grid.Column="1"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="263" Margin="3,162,0,0" VerticalAlignment="Top" Width="306" Background="{StaticResource LofipWhite}" Grid.Column="1">
+            <TextBox x:Name="_Txtbox_downsampleFactor" ToolTip="Decreases the amount of points in the pointclouds" HorizontalAlignment="Left"  Margin="162,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Algorithm Config" HorizontalAlignment="Left" VerticalAlignment="Top" Width="274"  Margin="10,10,-7,0" Style="{StaticResource HeadlineFontOnWhite}"/>
+            <TextBlock Text="Downsample factor:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="117" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_euclideanExtractionRadius" ToolTip="The extraction radius for points in m" HorizontalAlignment="Left"  Margin="162,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Eucl. extract. radius:" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="117" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_euclideanMinimumVolume" ToolTip="The minimum volume for the euclidean extraction in m³" HorizontalAlignment="Left"  Margin="162,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Eucl. min. volume:" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="117" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_indistValue" ToolTip="Inlier Distance, -1 = uses all points" HorizontalAlignment="Left"  Margin="162,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Indist value:" HorizontalAlignment="Left" Margin="64,116,0,0" VerticalAlignment="Top" Width="93" Style="{StaticResource NormalFontOnWhite}"/>
+            <CheckBox x:Name="_Checkbox_PerformICP" Content="ICP" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top"/>
+            <TextBlock Text="Planar Iterations:" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="117" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBlock Text="Planar Threshold Distance:" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="139" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_planarIterations" ToolTip="Amount of Iterations to identify planes in the pointcloud" HorizontalAlignment="Left"  Margin="162,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBox x:Name="_Txtbox_planarThresholdDistance" ToolTip="Distance for the threshold to identify points in a plane" HorizontalAlignment="Left"  Margin="162,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Planar Comparison Value:" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" Width="139" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_planarComparisonValue" ToolTip="Value for the comparison of found planes" HorizontalAlignment="Left"  Margin="162,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBox x:Name="_Txtbox_amountOfFrames" ToolTip="Decreases the amount of points in the pointclouds" HorizontalAlignment="Left"  Margin="162,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Amount of frames:" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="117" Style="{StaticResource NormalFontOnWhite}"/>
+            <ComboBox x:Name="_ComboBox_choseAlgorithm" ToolTip="Set the algorithm for the volume calculations" HorizontalAlignment="Left" Margin="163,215,0,0" VerticalAlignment="Top" Width="132" Height="17" FontSize="9" />
+            <TextBlock Text="Algorithm Correction:" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="139" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_algorithmCorrectionValue" ToolTip="Value for the comparison of found planes" HorizontalAlignment="Left"  Margin="162,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+            <TextBlock Text="Use Algorithm:" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="139" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBlock Text="Concav Threshold Angle:" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Width="139" Style="{StaticResource NormalFontOnWhite}"/>
+            <TextBox x:Name="_Txtbox_concavThresholdAngle" ToolTip="Value for the comparison of found planes" HorizontalAlignment="Left"  Margin="162,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Style="{StaticResource SettingsTextBoxStyle}"/>
+        </Grid>
+
+    </Grid>
+</Window>

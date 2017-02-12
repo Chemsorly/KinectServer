@@ -1,0 +1,296 @@
+﻿<Window x:Class="Post_knv_Server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Server Anwendung" Height="780" Width="1500" MinHeight="780" MinWidth="1420" Background="{DynamicResource LofipGreenLight}" WindowStartupLocation="CenterScreen" WindowState="Maximized" Closed="Window_Closed">
+    <Window.Resources>
+        <Style x:Key="SettingsStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="0" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/gear_256_darkgrey.png" Stretch="Uniform"/>
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ShutdownStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="0" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/pause_256_darkgrey.png" Stretch="Uniform"/>
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DeleteStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border2" 
+                        BorderThickness="0" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border2">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/delete_256_darkgrey.png" Stretch="Uniform"/>
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MuteStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="0" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/cross_256_darkgrey.png" Stretch="Uniform"/>
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,0,2,-3" RenderTransformOrigin="0.5,0.5">
+
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <TextBox x:Name="_Console" Height="200" Margin="720,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Style="{StaticResource NormalTextBoxStyle}" HorizontalAlignment="Left" Width="681"/>
+        <ListView x:Name="ConnectionStatusListView" HorizontalAlignment="Left" Height="200" Margin="10,36,0,0" VerticalAlignment="Top" Width="608" BorderBrush="Transparent" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ConnectionStatusListView_SelectionChanged">
+
+            <Style>
+                <Style.Triggers>
+                    <Trigger Property="Control.IsMouseOver" Value="True">
+                        <Setter Property="Control.Background" Value="Transparent" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFE9FFDC" />
+                            <Setter Property="BorderBrush" Value="{x:Null}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+
+                <GridView AllowsColumnReorder="False">
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="ID"  Width="33">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ID}" Style="{StaticResource NormalFontOnWhite}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Client IP" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding IP}" Style="{StaticResource NormalFontOnWhite}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}" Style="{StaticResource NormalFontOnWhite}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Link"  Width="50" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Height="25" Width="40">
+                                    <Image Name="_imageClientStatus" Source="{Binding conStatus}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                        
+                                    </Image>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Kinect"  Width="50" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Height="25" Width="40">
+                                    <Image Name="_imageKinectStatus" Source="{Binding kinStatus}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+
+                                    </Image>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Master"  Width="50" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Width="40" Height="25">
+                                    <CheckBox x:Name="_CheckboxMaster"  IsChecked="{Binding master}" Checked="_CheckboxMaster_Checked" Unchecked="_CheckboxMaster_Checked" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Mute" Width="50" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid Width="40" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                    <Image Name="_imageMute" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding backgroundMute}"/>
+                                    <CheckBox x:Name="_CheckboxMute" IsChecked="{Binding mute}" Checked="_CheckboxMute_Checked" Unchecked="_CheckboxMute_Checked" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0" />
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Pause" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+
+                                <Button x:Name="_ButtonShutdown" Width="50" Height="25" Click="_ButtonShutdown_Click"  Style="{StaticResource ShutdownStyle}" Visibility="Visible" OpacityMask="{x:Null}" BorderBrush="{x:Null}" Cursor="" OverridesDefaultStyle="False" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button.Foreground>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/pause_256_darkgrey.png" Stretch="Uniform"/>
+                                    </Button.Foreground>
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/pause_256_grey.png" Stretch="Uniform"/>
+                                    </Button.Background>
+
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Delete" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="_ButtonDelete" Width="50" Height="25" Click="_ButtonDelete_Click" Style="{StaticResource DeleteStyle}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/delete_256_grey.png" Stretch="Uniform"/>
+                                    </Button.Background>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Settings" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="_ButtonSettings" Width="50" Height="25" Click="_ButtonSettings_Click" Style="{StaticResource SettingsStyle}" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/gear_256_grey.png" Stretch="Uniform"/>
+                                    </Button.Background>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Text="Connection Status:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Style="{StaticResource HeadlineFontOnWhite}"/>
+        <Button x:Name="_ButtonFetchData"  HorizontalAlignment="Left" Margin="898,241,0,0" VerticalAlignment="Top" Width="148" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonScanAll_Click" Content="2. Request Kinect Data"/>
+        <Image Name="_FusionImage" Width="344" HorizontalAlignment="Left" Margin="10,0,0,47.4" Stretch="UniformToFill" Height="300" VerticalAlignment="Bottom"/>
+        <Button Content="Server Settings" HorizontalAlignment="Left" Margin="469,241,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonServerSettings_Click"/>
+        <Image x:Name="_PointImage_Front" Width="340" HorizontalAlignment="Left" Margin="359,0,0,47.4" Stretch="UniformToFill" Height="300" VerticalAlignment="Bottom"/>
+        <Image x:Name="_PointImage_Side" Width="344" HorizontalAlignment="Left" Margin="708,0,0,47.4" Stretch="UniformToFill" RenderTransformOrigin="0.49,0.486" Height="300" VerticalAlignment="Bottom"/>
+        <Image x:Name="_PointImage_Bottom" Width="344" HorizontalAlignment="Left" Margin="1057,0,0,47.4" Stretch="UniformToFill" Height="300" VerticalAlignment="Bottom"/>
+        <TextBlock Text="Preview Section:" HorizontalAlignment="Left" Margin="10,0,0,349" Style="{StaticResource HeadlineFontOnWhite}" Height="24" VerticalAlignment="Bottom"/>
+        <Label Content="Fusion View" HorizontalAlignment="Left" Margin="10,0,0,15" Height="26" VerticalAlignment="Bottom"/>
+        <Label Content="Front View" HorizontalAlignment="Left" Margin="359,0,0,15" Height="26" VerticalAlignment="Bottom"/>
+        <Label Content="Side View" HorizontalAlignment="Left" Margin="708,0,0,15" Height="26" VerticalAlignment="Bottom"/>
+        <Label Content="Bottom View" HorizontalAlignment="Left" Margin="1057,0,0,15" Height="26" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="_Txtblck_CurrentAlgorithm" HorizontalAlignment="Left" Margin="10,340,0,0" TextWrapping="Wrap" Text="Current Algorithm:" VerticalAlignment="Top"/>
+        <Button x:Name="_ButtonCalibrateAll"  HorizontalAlignment="Left" Margin="720,241,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonScanAll_Click" Content=" 1. Calibrate Kinects"/>
+        <TextBlock Text="Server Log:" Margin="720,10,0,0" VerticalAlignment="Top" Style="{StaticResource HeadlineFontOnWhite}" HorizontalAlignment="Left" Width="106"/>
+        <Button x:Name="_ButtonSelectPlanes"  HorizontalAlignment="Left" Margin="1075,241,0,0" VerticalAlignment="Top" Width="150" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonSelectPlanes_Click" Content="3. Select Planes" IsEnabled="False"/>
+        <Button x:Name="_ButtonEuclidianScan"  HorizontalAlignment="Left" Margin="1252,241,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonEuclidianScan_Click" Content="4. Euclidian Scan" IsEnabled="False"/>
+        <Button x:Name="_ButtonScan" HorizontalAlignment="Left" Margin="205,241,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonScanAll_Click" Content="Scan" IsEnabled="False"/>
+        <Grid HorizontalAlignment="Left" Height="94" Margin="10,241,0,0" VerticalAlignment="Top" Width="149" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="338*"/>
+                <ColumnDefinition Width="343*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Master Kinect" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="108" Grid.ColumnSpan="2"/>
+            <Label Content="Planes" HorizontalAlignment="Left" Margin="0,62,0,0" VerticalAlignment="Top" Height="28" Width="108"/>
+            <Label Content="Reference Table(s)" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" Height="28" Width="108" Grid.ColumnSpan="2"/>
+            <Image Name="_imageMasterKinectSet"  HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="21" Source="pack://siteoforigin:,,,/Resources/cross_256_orange.png" ToolTip="Indicates if the master Kinect is set" Grid.Column="1" Margin="44,2,0,0"/>
+            <Image x:Name="_imageReferenceTableSet"  HorizontalAlignment="Left" Height="25" Margin="44,33,0,0" VerticalAlignment="Top" Width="21" Source="pack://siteoforigin:,,,/Resources/cross_256_orange.png" ToolTip="Indicates if the reference tables for the slave Kinects are set" Grid.Column="1"/>
+            <Image x:Name="_imagePlanesSet"  HorizontalAlignment="Left" Height="25" Margin="44,64,0,0" VerticalAlignment="Top" Width="21" Source="pack://siteoforigin:,,,/Resources/cross_256_orange.png" ToolTip="Indicates if the planes are set" Grid.Column="1"/>
+        </Grid>
+        <Button x:Name="_ButtonDebugLoadMeshFromFileAndScan"  HorizontalAlignment="Left" Margin="205,297,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonDebugLoadMeshFromFileAndScan_Click">
+            <TextBlock>
+                Debug: Load mesh <LineBreak/> 
+                from file and scan
+            </TextBlock>
+        </Button>
+        <Button x:Name="_ButtonDebugLoadMeshFromFileAndSetReference"  HorizontalAlignment="Left" Margin="898,298,0,0" VerticalAlignment="Top" Width="148" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_ButtonDebugLoadMeshFromFileAndSetReference_Click">
+            <TextBlock FontSize="13">Debug: Load mesh from <LineBreak/> file and set reference</TextBlock>
+        </Button>
+        <Button Content="Container Settings" HorizontalAlignment="Left" Margin="469,297,0,0" VerticalAlignment="Top" Width="149" Style="{StaticResource ButtonStyleOnWhite}" Height="38" Click="_Button_ContainerSettings_Click"/>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Table]
+(
+	[ClientId] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [ClientName] NVARCHAR(50) NOT NULL,
+    [ClientIP] NVARCHAR(20) NOT NULL 
+)
